@@ -12,7 +12,6 @@ import ai.onnxruntime.OnnxSequence;
 import ai.onnxruntime.OnnxTensor;
 import ai.onnxruntime.OnnxValue;
 import ai.onnxruntime.OrtException;
-import ai.onnxruntime.SequenceInfo;
 import io.warp10.script.WarpScriptException;
 
 public class ONNXUtils {
@@ -21,10 +20,12 @@ public class ONNXUtils {
     try {
       switch(value.getType()) {
         case ONNX_TYPE_MAP:
-          Map<Object,Object> map = ((OnnxMap) value).getValue();
+          //Map<Object,Object> map = ((OnnxMap) value).getValue();
+          Map map = ((OnnxMap) value).getValue();
           return sanitize(map);
         case ONNX_TYPE_SEQUENCE:
-          List<Object> list = ((OnnxSequence) value).getValue();
+          //List<Object> list = ((OnnxSequence) value).getValue();
+          List list = ((OnnxSequence) value).getValue();
           return sanitize(list);
         case ONNX_TYPE_TENSOR:
         case ONNX_TYPE_SPARSETENSOR:

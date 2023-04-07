@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
-
 import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
@@ -129,9 +127,9 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
       if (null != env) {
         try {
           env.close();
-        } catch (OrtException oe) {
+        } catch (Exception e) {
           if (null == error) {
-            error = new WarpScriptException(getName() + " error while closing ONNX environment.", oe);
+            error = new WarpScriptException(getName() + " error while closing ONNX environment.", e);
           }
         }
       }
