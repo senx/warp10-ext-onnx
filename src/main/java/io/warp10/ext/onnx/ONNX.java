@@ -43,20 +43,23 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
   public Object apply(WarpScriptStack stack) throws WarpScriptException {
     
     Object top = stack.pop();
-    
-    if (!(top instanceof Map)) {
-      throw new WarpScriptException(getName() + " expects a parameter MAP.");
-    }
-    
-    Map<Object,Object> params = (Map<Object,Object>) top;
-    
-    top = stack.pop();
-    
+
     if (!(top instanceof Macro)) {
       throw new WarpScriptException(getName() + " operates on a MACRO.");
     }
-    
+
     Macro macro = (Macro) top;
+
+    top = stack.pop();
+
+    Object model;
+    if (top instanceof byte[] || top instanceof String) {
+      model = top;
+    } else if (top instanceof Map) {
+      model = ((Map<Object,Object>) top).get(ONNX_MODEL);
+    } else {
+      throw new WarpScriptException(getName() + " expects a parameter MAP, an ONNX model (BYTES), or a path (STRING) to an ONNX model.");
+    }
     
     OrtEnvironment env = null;
     
@@ -65,8 +68,6 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
     try {
       env = OrtEnvironment.getEnvironment();
       env.setTelemetry(false);
-      
-      Object model = params.get(ONNX_MODEL);
 
       if (model instanceof byte[]) {
         session = env.createSession((byte[]) model);
