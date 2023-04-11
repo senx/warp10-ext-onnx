@@ -93,8 +93,9 @@ public class ONNXUtils {
     } else if (input instanceof Float) {
       return ((Float) input).doubleValue();
     } else if (input.getClass().isArray()) {
-      List<Object> array = new ArrayList<Object>(Array.getLength(input));
-      for (int i = 0; i < array.size(); i++) {
+      int size = Array.getLength(input);
+      List<Object> array = new ArrayList<Object>(size);
+      for (int i = 0; i < size; i++) {
         array.add(sanitize(Array.get(input, i)));
       }
       return array;
