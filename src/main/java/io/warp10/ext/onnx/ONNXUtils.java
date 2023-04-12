@@ -103,41 +103,4 @@ public class ONNXUtils {
       throw new WarpScriptException("Unsupported type " + input.getClass());
     }
   }
-
-  public static Object toArray(List<Object> list) throws WarpScriptException {
-    if (list.isEmpty()) {
-      return new Object[0];
-    }
-
-    // Determine type of elements if possible
-    Object first = list.get(0);
-
-    if (first instanceof Long) {
-      long[] array = new long[list.size()];
-      for (int i = 0; i < list.size(); i++) {
-        array[i] = ((Long) list.get(i)).longValue();
-      }
-      return array;
-    } else if (first instanceof Double) {
-      double[] array = new double[list.size()];
-      for (int i = 0; i < list.size(); i++) {
-        array[i] = ((Double) list.get(i)).doubleValue();
-      }
-      return array;
-    } else if (first instanceof String) {
-      String[] array = new String[list.size()];
-      for (int i = 0; i < list.size(); i++) {
-        array[i] = (String) list.get(i);
-      }
-      return array;
-    } else if (first instanceof List) {
-      Object[] array = new Object[list.size()];
-      for (int i = 0; i < list.size(); i++) {
-        array[i] = toArray((List<Object>) list.get(i));
-      }
-      return array;
-    } else {
-      throw new WarpScriptException("Invalid type, cannot convert " + first.getClass() + " to an ONNX Tensor.");
-    }
-  }
 }

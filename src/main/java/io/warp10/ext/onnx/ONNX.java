@@ -141,16 +141,6 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
         }
       }
       
-      if (null != env) {
-        try {
-          env.close();
-        } catch (Exception e) {
-          if (null == error) {
-            error = new WarpScriptException(getName() + " error while closing ONNX environment.", e);
-          }
-        }
-      }
-      
       if (null != error) {
         throw error;
       }
