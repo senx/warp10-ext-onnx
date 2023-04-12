@@ -1,5 +1,5 @@
 //
-//   Copyright 2019  SenX S.A.S.
+//   Copyright 2019-23  SenX S.A.S.
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -111,7 +111,7 @@ dependencies {
   //compile group: 'GROUP', name: 'NAME', version: 'VERSION'
 
   // https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime
-  compile group: 'com.microsoft.onnxruntime', name: 'onnxruntime', version: '1.4.0'
+  compile group: 'com.microsoft.onnxruntime', name: 'onnxruntime', version: '1.14.0'
 
   testCompile'io.warp10:warpscript:+'
   testImplementation 'junit:junit:4.12'
