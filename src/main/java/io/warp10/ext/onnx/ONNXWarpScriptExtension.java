@@ -41,8 +41,8 @@ public class ONNXWarpScriptExtension extends WarpScriptExtension {
     
     functions.put("ONNX", new ONNX("ONNX"));
     functions.put("ONNX.RUN", new ONNXRUN("ONNX.RUN"));
-    functions.put("->ONNX", new TOONNX("->ONNX"));
-    functions.put("ONNXINFO", new ONNXINFO("ONNXINFO"));
+    functions.put("ONNX.TENSOR", new ONNXTENSOR("ONNX.TENSOR"));
+    functions.put("ONNX.INFO", new ONNXINFO("ONNX.INFO"));
   }
   
   @Override

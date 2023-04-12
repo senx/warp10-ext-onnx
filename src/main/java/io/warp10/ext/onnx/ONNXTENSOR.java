@@ -26,8 +26,8 @@ import io.warp10.script.WarpScriptException;
 import io.warp10.script.WarpScriptStack;
 import io.warp10.script.WarpScriptStackFunction;
 
-public class TOONNX extends NamedWarpScriptFunction implements WarpScriptStackFunction {
-  public TOONNX(String name) {
+public class ONNXTENSOR extends NamedWarpScriptFunction implements WarpScriptStackFunction {
+  public ONNXTENSOR(String name) {
     super(name);
   }
 
