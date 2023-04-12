@@ -42,7 +42,7 @@ public class ONNXTENSOR extends NamedWarpScriptFunction implements WarpScriptSta
   public Object apply(WarpScriptStack stack) throws WarpScriptException {
     Object top = stack.pop();
     if (!(top instanceof List)) {
-      throw new WarpScriptException(getName() + " expects a shape LIST<LONG>");
+      throw new WarpScriptException(getName() + " expects a shape (LIST)");
     }
 
     List list = (List) top;
