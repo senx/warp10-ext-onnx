@@ -23,9 +23,12 @@
 
   '>
   'sig' [
-    [ [ ] [ ] ]
+    [ [ 'input:MAP' 'session:ORTSESSION' ] REVERSE [ 'output:MAP' ] ]
   ]
   'params' {
+    'input' 'The input as MAP of STRING to ONNXTENSOR'
+    'output' 'The output as MAP of STRING to an OBJECT of a primitive WarpScript type'
+    'session' 'An ORTSESSION object created with ONNX function'
   }
   'examples' [
   ]
