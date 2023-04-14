@@ -20,12 +20,17 @@
   'related' [ 'ONNXTENSOR' 'ONNXRUN' 'ONNXINFO' ]
   'desc'
   <'
-
+Create an ONNX runtime session instance (ORTSESSION) from an ONNX model (BYTES or path:STRING). Then, a session-macro (MACRO) is executed within the session.
+The session instance is pushed onto the stack prior of the macro execution and is closed afterward.
   '>
   'sig' [
-    [ [ ] [ ] ]
+    [ [ 'model:BYTES' 'session-macro:MACRO:' ] REVERSE [ ] ]
+    [ [ 'path:STRING' 'session-macro:MACRO:' ] REVERSE [ ] ]
   ]
   'params' {
+    'session-macro' 'Macro to be evaluated upon an ORTSESSION instance'
+    'path' 'Path of an ONNX model. Configuration onnx.classpath must be set to true. Configuration onnx.modelroot must be set to a relative path ( ../ not allowed)'
+    'model' 'An ONNX model (BYTES)'
   }
   'examples' [
   ]

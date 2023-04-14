@@ -19,7 +19,9 @@ package io.warp10.ext.onnx;
 import java.util.HashMap;
 import java.util.Map;
 
+import ai.onnxruntime.OrtSession;
 import io.warp10.WarpConfig;
+import io.warp10.script.functions.TYPEOF;
 import io.warp10.warp.sdk.WarpScriptExtension;
 
 public class ONNXWarpScriptExtension extends WarpScriptExtension {
@@ -43,6 +45,16 @@ public class ONNXWarpScriptExtension extends WarpScriptExtension {
     functions.put("ONNX.RUN", new ONNXRUN("ONNX.RUN"));
     functions.put("ONNX.TENSOR", new ONNXTENSOR("ONNX.TENSOR"));
     functions.put("ONNX.INFO", new ONNXINFO("ONNX.INFO"));
+
+    TYPEOF.addResolver(new TYPEOF.TypeResolver() {
+      @Override
+      public String typeof(Class c) {
+        if (OrtSession.class.isAssignableFrom(c)) {
+          return "ORTSESSION";
+        }
+        return null;
+      }
+    });
   }
   
   @Override

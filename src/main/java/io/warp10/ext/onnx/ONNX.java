@@ -30,6 +30,7 @@ import io.warp10.script.WarpScriptException;
 import io.warp10.script.WarpScriptStack;
 import io.warp10.script.WarpScriptStack.Macro;
 import io.warp10.script.WarpScriptStackFunction;
+import io.warp10.script.functions.TYPEOF;
 
 public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunction {
   
@@ -125,6 +126,7 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
       }
             
       stack.push(session);
+
       stack.exec(macro);
     } catch (IOException ioe) {
       throw new WarpScriptException(getName() + " error loading ONNX model.", ioe);
@@ -137,7 +139,7 @@ public class ONNX extends NamedWarpScriptFunction implements WarpScriptStackFunc
         try {
           session.close();
         } catch (OrtException oe) {
-          error = new WarpScriptException(getName() + " error while closing ONNC session,", oe);
+          error = new WarpScriptException(getName() + " error while closing ONNX session,", oe);
         }
       }
       
