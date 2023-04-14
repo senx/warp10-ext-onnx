@@ -20,12 +20,18 @@
   'related' [ 'ONNXRUN' 'ONNXINFO' 'ONNX' ]
   'desc'
   <'
-
+Convert data into an ONNX tensor.
   '>
   'sig' [
-    [ [ ] [ ] ]
+    [ [ 'data:LIST' 'type:STRING' 'shape:LIST' ] REVERSE [ 'tensor:ONNXTENSOR' ] ]
+    [ [ 'binaryData:BYTES' 'type:STRING' 'shape:LIST' ] REVERSE [ 'tensor:ONNXTENSOR' ] ]
   ]
   'params' {
+  'data' 'Numeric data to be converted'
+  'binaryData' 'Numeric data in binary format to be converted'
+  'type' 'ONNX java type of output tensor. One of [ FLOAT DOUBLE INT8 INT16 INT32 INT64 BOOL STRING UINT8 UNKNOWN ]'
+  'shape' 'Tensor shape as a LIST of LONG'
+  'tensor' 'Output tensor'
   }
   'examples' [
   ]
