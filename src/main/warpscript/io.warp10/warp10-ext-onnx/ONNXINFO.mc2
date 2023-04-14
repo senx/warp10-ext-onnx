@@ -20,12 +20,14 @@
   'related' [ 'ONNXTENSOR' 'ONNXRUN' 'ONNX' ]
   'desc'
   <'
-
+Return model information (MAP) about an ONNX runtime session (ORTSESSION)
   '>
   'sig' [
-    [ [ ] [ ] ]
+    [ [ 'session:ORTSESSION' ] [ 'info:MAP' ] ]
   ]
   'params' {
+    'session' 'An ORTSESSION object created with ONNX function'
+    'info' 'A MAP of model information of the session'
   }
   'examples' [
   ]
