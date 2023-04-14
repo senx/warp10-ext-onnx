@@ -20,7 +20,7 @@
   'related' [ 'ONNXTENSOR' 'ONNXINFO' 'ONNX' ]
   'desc'
   <'
-
+Run inference of an ONNX model.
   '>
   'sig' [
     [ [ 'input:MAP' 'session:ORTSESSION' ] REVERSE [ 'output:MAP' ] ]
