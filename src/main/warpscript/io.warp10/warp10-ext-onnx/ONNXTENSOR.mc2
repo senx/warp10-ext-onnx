@@ -27,8 +27,8 @@ Convert data into an ONNX tensor.
     [ [ 'bytearray:BYTES' 'type:STRING' 'shape:LIST' ] REVERSE [ 'tensor:ONNXTENSOR' ] ]
   ]
   'params' {
-  'data' 'Numeric data to be converted as a LIST, possibly nested. The output structure will be reshaped wrt shape argument.'
-  'bytearray' 'Numeric data as an array of bytes to be converted'
+  'data' 'Numeric data as a LIST, possibly nested, to be converted to an ONNXTENSOR. The output structure will be reshaped w.r.t. shape argument.'
+  'bytearray' 'Numeric data in BYTES format to be converted to an ONNXTENSOR'
   'type' 'ONNX java type of output tensor. One of [ FLOAT DOUBLE INT8 INT16 INT32 INT64 BOOL STRING UINT8 UNKNOWN ]'
   'shape' 'Tensor shape as a LIST of LONG'
   'tensor' 'Output tensor'

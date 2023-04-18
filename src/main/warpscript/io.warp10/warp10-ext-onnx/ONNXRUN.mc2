@@ -23,7 +23,7 @@
 Run inference of an ONNX model.
   '>
   'sig' [
-    [ [ 'input:MAP' 'session:ORTSESSION' ] REVERSE [ 'output:MAP' ] ]
+    [ [ 'session:ORTSESSION' 'input:MAP' ] REVERSE [ 'output:MAP' ] ]
   ]
   'params' {
     'input' 'The input as MAP of STRING to ONNXTENSOR'
