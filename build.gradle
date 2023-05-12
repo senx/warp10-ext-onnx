@@ -82,15 +82,8 @@ wrapper {
 //
 
 repositories {
-  jcenter()
-  
-  maven {
-    url 'https://dl.bintray.com/senx/maven'
-  }
-
-  maven {
-    url 'https://dl.bintray.com/hbs/maven'
-  }
+  mavenLocal()
+  mavenCentral()
 }
 
 configurations {
@@ -113,7 +106,7 @@ dependencies {
   // https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime
   compile group: 'com.microsoft.onnxruntime', name: 'onnxruntime', version: '1.14.0'
 
-  testCompile'io.warp10:warpscript:+'
+  testCompile'io.warp10:warpscript:3.0.0-beta0'
   testImplementation 'junit:junit:4.12'
 }
 
