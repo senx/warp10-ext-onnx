@@ -1,0 +1,55 @@
+//
+//   Copyright 2023  SenX S.A.S.
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+
+{
+  'name' 'ONNXTENSOR'
+  'ext' 'io.warp10.ext.onnx.ONNXWarpScriptExtension'
+  'related' [ 'ONNXRUN' 'ONNXINFO' 'ONNX' ]
+  'desc'
+  <'
+Convert data into an ONNX tensor.
+  '>
+  'sig' [
+    [ [ 'data:LIST' 'type:STRING' 'shape:LIST' ] REVERSE [ 'tensor:ONNXTENSOR' ] ]
+    [ [ 'bytearray:BYTES' 'type:STRING' 'shape:LIST' ] REVERSE [ 'tensor:ONNXTENSOR' ] ]
+  ]
+  'params' {
+  'data' 'Numeric data as a LIST, possibly nested, to be converted to an ONNXTENSOR. The output structure will be reshaped w.r.t. shape argument.'
+  'bytearray' 'Numeric data in BYTES format to be converted to an ONNXTENSOR'
+  'type' 'ONNX java type of output tensor. One of [ FLOAT DOUBLE INT8 INT16 INT32 INT64 BOOL STRING UINT8 UNKNOWN ]'
+  'shape' 'Tensor shape as a LIST of LONG'
+  'tensor' 'Output tensor'
+  }
+  'examples' [
+  ]
+} 'info' STORE
+
+<%
+  !$info INFO
+  SAVE 'context' STORE
+  <%
+    'ONNXTENSOR' EVAL
+  %>
+  <% // catch any exception
+    RETHROW
+  %>
+  <% // finally, restore the context
+    $context RESTORE
+  %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

@@ -1,0 +1,54 @@
+//
+//   Copyright 2023  SenX S.A.S.
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+
+{
+  'name' 'ONNX'
+  'ext' 'io.warp10.ext.onnx.ONNXWarpScriptExtension'
+  'related' [ 'ONNXTENSOR' 'ONNXRUN' 'ONNXINFO' ]
+  'desc'
+  <'
+Create an ONNX runtime session instance (ORTSESSION) from an ONNX model (BYTES or path:STRING). Then, a session-macro (MACRO) is executed within the session.
+The session instance is pushed onto the stack prior of the macro execution and is closed afterward.
+  '>
+  'sig' [
+    [ [ 'model:BYTES' 'session-macro:MACRO' ] REVERSE [ ] ]
+    [ [ 'path:STRING' 'session-macro:MACRO' ] REVERSE [ ] ]
+  ]
+  'params' {
+    'session-macro' 'Macro to be evaluated upon an ORTSESSION instance'
+    'path' 'Path of an ONNX model (STRING). Configuration onnx.classpath must be set to true. Configuration onnx.modelroot is used to set a relative root path ( ../ not allowed)'
+    'model' 'An ONNX model (BYTES)'
+  }
+  'examples' [
+  ]
+} 'info' STORE
+
+<%
+  !$info INFO
+  SAVE 'context' STORE
+  <%
+    'ONNX' EVAL
+  %>
+  <% // catch any exception
+    RETHROW
+  %>
+  <% // finally, restore the context
+    $context RESTORE
+  %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro
